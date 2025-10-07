@@ -6,32 +6,40 @@ import Settings from "./pages/Settings";
 import Profile from "./pages/Profile";
 import DashboardNav, { type Section } from "./components/DashboardNav";
 import { useEffect, useMemo, useState } from "react";
+import BearBullsLanding from "./pages/BearBullsLanding";
 
 function App() {
-  const [hash, setHash] = useState<string>(() => window.location.hash || "#/market");
+  const [hash, setHash] = useState<string>(() => window.location.hash || "#/");
 
   useEffect(() => {
-    const onHash = () => setHash(window.location.hash || "#/market");
+    const onHash = () => setHash(window.location.hash || "#/");
     window.addEventListener("hashchange", onHash);
     return () => window.removeEventListener("hashchange", onHash);
   }, []);
 
-  const route = useMemo<Section>(() => {
+  const route = useMemo<Section | "landing">(() => {
     const raw = hash.replace(/^#\//, "");
-    const allowed: Section[] = ["market", "orders", "position", "funds", "settings", "profile"];
-    return (allowed.includes(raw as Section) ? (raw as Section) : "market");
+    if (raw === "" || raw === "/") return "landing";
+    const allowed: Section[] = ["MarketWatch", "Orders", "Position", "Funds", "Settings", "Profile"];
+    return (allowed.includes(raw as Section) ? (raw as Section) : "MarketWatch");
   }, [hash]);
 
   return (
     <div className="min-h-screen bg-[#0b1020] text-white flex flex-col">
-      <Header />
-      {route === "market" && <Market />}
-      {route === "orders" && <Orders />}
-      {route === "position" && <Position />}
-      {route === "funds" && <Funds />}
-      {route === "settings" && <Settings />}
-      {route === "profile" && <Profile />}
-      <DashboardNav active={route} />
+      {route === "landing" ? (
+        <BearBullsLanding />
+      ) : (
+        <>
+          <Header />
+          {route === "MarketWatch" && <Market />}
+          {route === "Orders" && <Orders />}
+          {route === "Position" && <Position />}
+          {route === "Funds" && <Funds />}
+          {route === "Settings" && <Settings />}
+          {route === "Profile" && <Profile />}
+          <DashboardNav active={route as Section} />
+        </>
+      )}
     </div>
   );
 }

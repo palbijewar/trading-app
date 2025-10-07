@@ -1,13 +1,13 @@
-export type Section = "market" | "orders" | "position" | "funds" | "settings" | "profile";
+export type Section = "MarketWatch" | "Orders" | "Position" | "Funds" | "Settings" | "Profile";
 
 export default function DashboardNav({ active }: { active: Section }) {
   const items: { label: string; key: Section; hideOnMobile?: boolean }[] = [
-    { label: "Market", key: "market" },
-    { label: "Orders", key: "orders" },
-    { label: "Position", key: "position" },
-    { label: "Funds", key: "funds" },
-    { label: "Settings", key: "settings", hideOnMobile: true },
-    { label: "Profile", key: "profile", hideOnMobile: true },
+    { label: "Market", key: "MarketWatch" },
+    { label: "Orders", key: "Orders" },
+    { label: "Position", key: "Position" },
+    { label: "Funds", key: "Funds" },
+    { label: "Settings", key: "Settings", hideOnMobile: true },
+    { label: "Profile", key: "Profile", hideOnMobile: true },
   ];
   return (
     <div className="sticky bottom-0 inset-x-0 bg-[#0f162e]/80 backdrop-blur border-t border-[#1e2a4a]">
