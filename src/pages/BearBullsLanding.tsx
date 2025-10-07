@@ -81,7 +81,14 @@ export default function BearBullsLanding() {
           </Button>
 
           <div className="flex justify-between mt-6">
-            <Button className="bg-green-600 hover:bg-green-700 text-white">Instant Demo</Button>
+            <Button
+              className="bg-green-600 hover:bg-green-700 text-white"
+              onClick={() => {
+                window.location.hash = "/MarketWatch";
+              }}
+            >
+              Instant Demo
+            </Button>
             <Button className="bg-blue-600 hover:bg-blue-700 text-white">Install App</Button>
           </div>
         </form>
