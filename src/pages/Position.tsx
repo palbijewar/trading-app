@@ -8,6 +8,8 @@ export default function Position() {
   return (
     <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex-1">
       <header className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-sm mb-8">
+        <Metric label="Ledger Balance" value="₹845369619" />
+        <Metric label="Margin Available" value="₹845560161" />
         <Metric label="Margin Used" value="₹200320" />
         <Metric label="M2M" value="₹845520081" />
       </header>
