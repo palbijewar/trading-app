@@ -2,6 +2,7 @@ import Market from "./pages/Market";
 import Orders from "./pages/Orders";
 import Position from "./pages/Position";
 import Settings from "./pages/Settings";
+import Funds from "./pages/Funds";
 import DashboardNav, { type Section } from "./components/DashboardNav";
 import { useEffect, useMemo, useState } from "react";
 import BearBullsLanding from "./pages/BearBullsLanding";
@@ -18,7 +19,7 @@ function App() {
   const route = useMemo<Section | "landing">(() => {
     const raw = hash.replace(/^#\//, "");
     if (raw === "" || raw === "/") return "landing";
-    const allowed: Section[] = ["MarketWatch", "Orders", "Position", "Settings"];
+    const allowed: Section[] = ["MarketWatch", "Orders", "Position", "Settings", "Funds"];
     return (allowed.includes(raw as Section) ? (raw as Section) : "MarketWatch");
   }, [hash]);
 
@@ -33,6 +34,7 @@ function App() {
           {route === "Orders" && <Orders />}
           {route === "Position" && <Position />}
           {route === "Settings" && <Settings />}
+          {route === "Funds" && <Funds />}
           <DashboardNav active={route as Section} />
         </>
       )}
