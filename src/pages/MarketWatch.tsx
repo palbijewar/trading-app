@@ -199,9 +199,7 @@ function BottomBar() {
             { label: "Market" },
             { label: "Orders" },
             { label: "Position" },
-            { label: "Funds" },
             { label: "Settings", hideOnMobile: true },
-            { label: "Profile", hideOnMobile: true },
           ].map((i) => (
             <div key={i.label} className={i.hideOnMobile ? "hidden sm:block" : "block"}>
               <div className="text-gray-300">{i.label}</div>
