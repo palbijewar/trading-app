@@ -1,9 +1,9 @@
-import BearBullsLanding from "./pages/BearBullsLanding";
+import MarketWatch from "./pages/MarketWatch";
 
 function App() {
   return (
     <>
-      <BearBullsLanding/>
+      <MarketWatch/>
     </>
   );
 }
