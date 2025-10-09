@@ -85,7 +85,6 @@ export default function Market() {
     try {
       const promises = CRYPTO_SYMBOLS.map(async (symbol) => {
         const response = await fetch(`https://api.binance.com/api/v3/ticker/24hr?symbol=${symbol}`);
-        console.log(response);
         
         const data: BinanceTicker = await response.json();
         
